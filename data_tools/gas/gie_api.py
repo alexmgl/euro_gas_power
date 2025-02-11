@@ -1,6 +1,9 @@
 import requests
 from mydatatools.config.settings_example import AGSI_API_TOKEN
 
+""" Gas Infrastructure Europe (GIE) provide Aggreagated Gas Storage Inventory (AGSI) and Aggregated LNG Storage Inventory (ALSI) APIs,
+GIE also acts as an Inside Information Platform (IIP) for Urgent Market Messaging (UMM) by operators through its IIP platform."""
+
 def fetch_agsi_data(country_code, date_from, date_to, api_token=AGSI_API_TOKEN):
     """
     Fetch daily gas storage data from AGSI+ for a specified country and date range.
