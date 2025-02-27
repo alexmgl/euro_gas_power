@@ -209,7 +209,10 @@ class GIE:
 if __name__ == '__main__':
 
     # EXAMPLE USAGE
-    gie_client = GIE("decd58bbd95344e7639f1634c6b93141")
+
+    API_KEY = "YOUR_API_KEY_HERE"
+    
+    gie_client = GIE(API_KEY)
 
     types = gie_client.get_unique_types()
     print("Unique Types:", types)
