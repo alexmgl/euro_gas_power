@@ -1,5 +1,4 @@
 import requests
-from mydatatools.config.settings_example import BMRS_API_KEY
 
 def fetch_bmrs_data(service, service_type='json', api_key=BMRS_API_KEY):
     """

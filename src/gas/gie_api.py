@@ -55,7 +55,7 @@ class GIE:
         self.eic_listing = response.json()
         return self.eic_listing
 
-    def fetch_agsi_data(self, country_code, date_from, date_to, page=1, size=300, all_pages=False):
+    def fetch_agsi_data(self, country_code, date_from, date_to, page=1, size=300, all_pages=False, **kwargs):
         """
         Fetch daily gas storage data from AGSI for a specified country and date range.
 
@@ -65,6 +65,7 @@ class GIE:
         :param page: Starting page number (default: 1)
         :param size: Number of records per page (default: 300, max: 300)
         :param all_pages: If True, fetch all pages and combine results.
+        :param kwargs: Additional parameters to update the request parameters.
         :return: JSON response parsed into a Python dict.
         """
         params = {
@@ -74,6 +75,10 @@ class GIE:
             "page": page,
             "size": size
         }
+
+        # Update the params dict with any additional keyword arguments
+        params.update(kwargs)
+
         response = self._get_with_rate_limiting(self.agsi_url, params=params)
         data = response.json()
 
@@ -210,9 +215,7 @@ if __name__ == '__main__':
 
     # EXAMPLE USAGE
 
-    API_KEY = "YOUR_API_KEY_HERE"
-    
-    gie_client = GIE(API_KEY)
+    gie_client = GIE()
 
     types = gie_client.get_unique_types()
     print("Unique Types:", types)
@@ -236,6 +239,7 @@ if __name__ == '__main__':
         date_to='2024-01-02',
         all_pages=True
     )
+
     df_alsi = pd.json_normalize(alsi_data.get('data', []))
     print("ALSI Data (first few rows):")
     print(df_alsi.head())
