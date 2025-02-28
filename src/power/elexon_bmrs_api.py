@@ -1,5 +1,7 @@
 import requests
 
+# todo - split this for OCGT / CCGT UK demand 
+
 class ElexonClient:
 
     ELEXON_URL = 'https://api.bmreports.com/BMRS'
