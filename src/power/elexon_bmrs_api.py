@@ -1,5 +1,13 @@
 import requests
 
+class ElexonClient:
+
+    ELEXON_URL = 'https://api.bmreports.com/BMRS'
+
+    def __init__():
+
+        pass
+
 def fetch_bmrs_data(service, service_type='json', api_key=BMRS_API_KEY):
     """
     Retrieve data from Elexon BMRS for a given service code.
@@ -20,3 +28,7 @@ def fetch_bmrs_data(service, service_type='json', api_key=BMRS_API_KEY):
     if service_type == 'json':
         return resp.json()
     return resp.text
+
+
+if __name__ == "__main__":
+    pass
